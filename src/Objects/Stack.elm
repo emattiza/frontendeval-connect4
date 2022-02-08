@@ -1,4 +1,4 @@
-module Stack exposing (mkSizedStack, Stack, pop, push, StackError, MkStackError)
+module Objects.Stack exposing (mkSizedStack, Stack, pop, push, StackError, MkStackError, toList, toArray)
 
 import Array exposing (Array)
 
@@ -49,3 +49,9 @@ push element (Stack size array) =
 
     else
         Err <| PushedToFullStack
+
+toList : Stack a -> List a
+toList (Stack _ array) = Array.toList array
+
+toArray : Stack a -> Array a
+toArray (Stack _ array) = array

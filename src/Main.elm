@@ -1,6 +1,6 @@
 module Main exposing (main)
 
-import Board exposing (Board, newBoard)
+import Objects.Board as Board exposing (Board, newBoard)
 import Browser
 import Html exposing (Html, button, div, text)
 import Html.Attributes exposing (class)
