@@ -1,42 +1,36 @@
 module Main exposing (main)
 
+import Board exposing (Board, newBoard)
 import Browser
 import Html exposing (Html, button, div, text)
-import Html.Events exposing (onClick)
 import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 
 
 type alias Model =
-    { count : Int }
+    { board : Result Board.MkBoardError Board }
 
 
 initialModel : Model
 initialModel =
-    { count = 0 }
+    { board = newBoard 7 6 }
 
 
 type Msg
-    = Increment
-    | Decrement
+    = NoMsg
 
 
 update : Msg -> Model -> Model
 update msg model =
     case msg of
-        Increment ->
-            { model | count = model.count + 1 }
-
-        Decrement ->
-            { model | count = model.count - 1 }
+        NoMsg ->
+            model
 
 
 view : Model -> Html Msg
 view model =
-    div [class "btn-group"]
-        [ button [ class "btn btn-lg", onClick Increment ] [ text "+1" ]
-        , div [] [ text <| String.fromInt model.count ]
-        , button [ class "btn btn-lg", onClick Decrement ] [ text "-1" ]
-        ]
+    div [ class "btn-group" ]
+        []
 
 
 main : Program () Model Msg
